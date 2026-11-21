@@ -271,3 +271,13 @@ body {
 .h1.hero-h1 {
   line-height: 1.16;
 }
+
+/* Menu jumps land closer to the section content (half the top padding). */
+section[id] {
+  scroll-margin-top: -36px;
+}
+@media (min-width: 1024px) {
+  section[id] {
+    scroll-margin-top: -72px;
+  }
+}
