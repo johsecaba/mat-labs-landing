@@ -152,7 +152,7 @@ export default function HomePage() {
       </section>
 
       <section id="figure-os" className="section bg-black text-fg">
-        <div className="shell grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+        <div className="shell grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.5fr)] lg:gap-12">
           <Reveal>
             <p className="tag">Figure OS</p>
             <h2 className="h2 mt-6">Software that reads shape.</h2>
@@ -164,9 +164,10 @@ export default function HomePage() {
           </Reveal>
           <Reveal>
             <Still
-              src="/media/figure-os.png"
+              src="/media/figure-os.webp"
               alt="Figure OS with a person marked for detection beside a pose skeleton and a position readout."
-              sizes="(min-width: 1024px) 560px, 100vw"
+              sizes="(min-width: 1024px) 840px, 100vw"
+              priority
               zoom
               imageClassName="object-cover"
               className="aspect-[2/1] w-full"
