@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { ViewMode } from "@/components/mesh-viewer-canvas";
+import type { ViewMode, ZoomFn } from "@/components/mesh-viewer-canvas";
 
 const Canvas3D = dynamic(() => import("@/components/mesh-viewer-canvas"), {
   ssr: false,
@@ -16,14 +16,21 @@ const modes: { id: ViewMode; label: string }[] = [
 ];
 
 export function MeshViewer() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(false);
+  const box = useRef<HTMLDivElement>(null);
+  const zoomRef = useRef<ZoomFn | null>(null);
+  const [active, setActive] = useState(false); // lazy-load trigger
   const [ready, setReady] = useState(false);
-  const onReady = useCallback(() => setReady(true), []);
+  const [engaged, setEngaged] = useState(false); // clicked into the box
   const [mode, setMode] = useState<ViewMode>("mesh");
+  const onReady = useCallback(() => setReady(true), []);
+  const engagedRef = useRef(false);
 
   useEffect(() => {
-    const el = ref.current;
+    engagedRef.current = engaged;
+  }, [engaged]);
+
+  useEffect(() => {
+    const el = box.current;
     if (!el) return;
     const io = new IntersectionObserver(
       ([e]) => {
@@ -38,24 +45,73 @@ export function MeshViewer() {
     return () => io.disconnect();
   }, []);
 
+  // Wheel only zooms with Ctrl/Cmd held, or after clicking into the box.
+  // Otherwise the event is left alone so the page scrolls normally.
+  useEffect(() => {
+    const el = box.current;
+    if (!el) return;
+    const onWheel = (e: WheelEvent) => {
+      if (!(e.ctrlKey || e.metaKey || engagedRef.current)) return;
+      e.preventDefault();
+      zoomRef.current?.(Math.exp(e.deltaY * 0.0025));
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, []);
+
   return (
-    <div>
+    <div className="mx-auto w-full max-w-[760px]">
       <div
-        ref={ref}
-        className="relative aspect-[4/5] w-full overflow-hidden bg-black sm:aspect-[16/10]"
+        ref={box}
+        onPointerDown={(e) => {
+          if ((e.target as HTMLElement).closest("button")) return;
+          setEngaged(true);
+        }}
+        onMouseLeave={() => setEngaged(false)}
+        className={`relative aspect-[4/5] max-h-[70vh] w-full overflow-hidden rounded-xl border bg-black transition-colors sm:aspect-[16/10] ${
+          engaged ? "border-white/50" : "border-white/15"
+        }`}
       >
         <Image
           src="/media/high-resolution-mesh.png"
           alt="A face shown as a high-resolution mesh, pixels on target, a triangle mesh, and a surface texture map."
           fill
-          sizes="(min-width: 1024px) 880px, 100vw"
+          sizes="(min-width: 800px) 760px, 100vw"
           className="object-contain"
         />
         {active ? (
-          <div className={`absolute inset-0 cursor-grab touch-pan-y bg-black transition-opacity duration-500 active:cursor-grabbing ${ready ? "opacity-100" : "opacity-0"}`}>
-            <Canvas3D mode={mode} onReady={onReady} />
+          <div
+            className={`absolute inset-0 cursor-grab bg-black transition-opacity duration-500 active:cursor-grabbing ${
+              ready ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <Canvas3D mode={mode} onReady={onReady} zoomRef={zoomRef} />
           </div>
         ) : null}
+
+        <p className="pointer-events-none absolute left-4 top-4 z-10 text-xs text-steel-on-dark">
+          Drag to rotate · Ctrl + scroll to zoom
+        </p>
+
+        <div className="absolute right-3 top-3 z-10 flex flex-col border border-white/20 bg-black/70 backdrop-blur">
+          <button
+            type="button"
+            aria-label="Zoom in"
+            onClick={() => zoomRef.current?.(0.8)}
+            className="h-9 w-9 text-lg leading-none text-fg hover:bg-white/10"
+          >
+            +
+          </button>
+          <button
+            type="button"
+            aria-label="Zoom out"
+            onClick={() => zoomRef.current?.(1.25)}
+            className="h-9 w-9 border-t border-white/20 text-lg leading-none text-fg hover:bg-white/10"
+          >
+            −
+          </button>
+        </div>
+
         <div
           role="group"
           aria-label="View mode"
@@ -75,11 +131,8 @@ export function MeshViewer() {
             </button>
           ))}
         </div>
-        <p className="pointer-events-none absolute left-4 top-4 z-10 text-xs text-steel-on-dark">
-          Drag to rotate. Scroll or pinch to zoom.
-        </p>
       </div>
-      <p className="mt-4 max-w-xl text-sm leading-normal text-steel-on-dark">
+      <p className="mt-4 text-sm leading-normal text-steel-on-dark">
         Sample model for illustration. Not MAT Labs sensor output.
       </p>
     </div>
