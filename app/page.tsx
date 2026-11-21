@@ -4,6 +4,7 @@ import { ParallaxStill } from "@/components/parallax-still";
 import { Reveal } from "@/components/reveal";
 import { Still } from "@/components/still";
 import { contactEmail } from "@/lib/site";
+import { WordCarousel } from "@/components/word-carousel";
 
 const stack = [
   {
@@ -101,6 +102,8 @@ const record = [
   ["Figures", "Issued per program"],
 ] as const;
 
+const heroWords = ["Mining","Security","Autonomy","Robotics","Payments","Drones","Cities"];
+
 export default function HomePage() {
   return (
     <main id="content">
@@ -110,8 +113,17 @@ export default function HomePage() {
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,#000_0%,rgba(0,0,0,0.78)_24%,rgba(0,0,0,0.12)_55%,rgba(0,0,0,0.4)_100%)]" />
         </div>
         <div className="shell relative z-10 flex min-h-[100svh] flex-col justify-end pb-16 pt-28 md:pb-24">
-          <p className="tag">SPI</p>
-          <h1 className="h1 mt-6 max-w-[18ch]">Spatial Phase Imaging.</h1>
+          <h1 className="h1">
+            <span className="sr-only">
+              Revolutionizing Vision. Reinventing mining, security, autonomy,
+              robotics, payments, drones and cities.
+            </span>
+            <span aria-hidden="true">
+              Revolutionizing Vision.
+              <br />
+              Reinventing <WordCarousel words={heroWords} />
+            </span>
+          </h1>
           <p className="mt-6 max-w-xl text-lg leading-normal">
             The closest thing to a human eye for today’s machines.
           </p>
