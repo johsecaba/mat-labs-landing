@@ -41,3 +41,16 @@ Demo requests open a mailto draft to `hello@mat.co`. That address is a placehold
 ## Media
 
 The hero is the only video (`public/media/hero-video-1080p.mp4`). Other sections use stills. `components/still.tsx` and `components/parallax-still.tsx` accept an optional `videoSrc` when a later loop exists. Leave it unset until the file is in the repo. Do not render an empty player.
+
+## Markets carousel
+
+`components/markets-carousel.tsx` is the tabbed carousel (Ore Mining, Commerce, Automotive, Robotics). It autoplays every 6 s, pauses on hover/focus and when offscreen, and does not autoplay with `prefers-reduced-motion`. Images live in `public/media/markets/` (downloaded, resized, WebP).
+
+### Image credits
+
+| Tab | File | Source | Author | License |
+| --- | --- | --- | --- | --- |
+| Ore Mining | `ore-mining.webp` (cropped) | https://commons.wikimedia.org/wiki/File:Mina_de_Chuquicamata,_Calama,_Chile,_2016-02-01,_DD_114.JPG | Diego Delso | CC BY-SA 4.0 (attribution required) |
+| Commerce | `commerce.webp` | https://www.pexels.com/photo/couple-buying-groceries-at-a-supermarket-4199490/ | Jack Sparrow | Pexels License (free commercial use) |
+| Automotive | `automotive.webp` | Still frame from MAT Labs hero video (`hero-video-1080p.mp4`, about 10.5 s) | MAT Labs | Own material |
+| Robotics | `robotics.webp` (cropped) | https://commons.wikimedia.org/wiki/File:Quadcopter_camera_drone_in_flight.jpg | Josh Sorenson | CC0 |

@@ -1,6 +1,7 @@
 import { DemoForm } from "@/components/demo-form";
 import { HeroMedia } from "@/components/hero-media";
 import { ParallaxStill } from "@/components/parallax-still";
+import { MarketsCarousel } from "@/components/markets-carousel";
 import { Reveal } from "@/components/reveal";
 import { Still } from "@/components/still";
 import { contactEmail } from "@/lib/site";
@@ -26,34 +27,6 @@ const stack = [
     kicker: "Record",
     title: "Mesh and surface",
     body: "Pixels on target. Texture on the mesh.",
-  },
-] as const;
-
-const markets = [
-  {
-    n: "01",
-    title: "Autonomous cars",
-    body: "Distance, motion, and the shape of a road scene from one stream.",
-  },
-  {
-    n: "02",
-    title: "Autonomous drones",
-    body: "Onboard vision for aircraft that navigate and inspect without a pilot in the loop.",
-  },
-  {
-    n: "03",
-    title: "Robots and androids",
-    body: "A body, a pose, and a surface, separated while the machine is moving.",
-  },
-  {
-    n: "04",
-    title: "Intelligent CCTV",
-    body: "Cameras that track a scene, not only store it. The change the smartphone made for the telephone.",
-  },
-  {
-    n: "05",
-    title: "Smart cities",
-    body: "One spatial picture for streets, facilities, and public space.",
   },
 ] as const;
 
@@ -102,7 +75,7 @@ const record = [
   ["Figures", "Issued per program"],
 ] as const;
 
-const heroWords = ["Mining","Security","Autonomy","Robotics","Payments","Drones","Cities"];
+const heroWords = ["Ore Mining", "Commerce", "Automotive", "Robotics"];
 
 export default function HomePage() {
   return (
@@ -115,8 +88,8 @@ export default function HomePage() {
         <div className="shell relative z-10 flex min-h-[100svh] flex-col justify-end pb-16 pt-28 md:pb-24">
           <h1 className="h1 hero-h1">
             <span className="sr-only">
-              Revolutionizing Vision. Reinventing mining, security, autonomy,
-              robotics, payments, drones and cities.
+              Revolutionizing Vision. Reinventing ore mining, commerce,
+              automotive and robotics.
             </span>
             <span aria-hidden="true">
               Revolutionizing Vision.
@@ -224,43 +197,22 @@ export default function HomePage() {
         <div className="h-[72px] lg:h-[144px]" />
       </section>
 
-      <section id="markets" className="bg-paper text-ink">
+      <section id="markets" className="bg-black text-fg">
         <div className="shell pt-[72px] lg:pt-[144px]">
           <Reveal>
-            <p className="tag text-steel">Markets</p>
+            <p className="tag text-steel-on-dark">Markets</p>
             <div className="mt-8 grid gap-10 lg:grid-cols-12">
               <h2 className="h2 lg:col-span-7">Where machines have to see.</h2>
-              <p className="max-w-md text-[17px] leading-normal lg:col-span-5">
+              <p className="max-w-md text-[17px] leading-normal text-steel-on-dark lg:col-span-5">
                 MAT Labs supplies U.S. enterprises and U.S. government and
                 defense programs.
               </p>
             </div>
           </Reveal>
         </div>
-        <Reveal className="mt-12">
-            <Still
-            src="/media/hero-frame.jpg"
-            alt="A roadway with vehicles marked and placed in the scene."
-            sizes="100vw"
-            zoom
-            imageClassName="object-cover"
-            className="aspect-video w-full"
-          />
-          <p className="shell tag mt-4 text-steel">Road scene. Vehicles marked in the frame.</p>
+        <Reveal className="mt-12 pb-[72px] lg:pb-[144px]">
+          <MarketsCarousel />
         </Reveal>
-        <div className="shell py-[72px] lg:py-[144px]">
-          <ul className="grid border-l border-t border-steel sm:grid-cols-2 lg:grid-cols-5">
-            {markets.map((item) => (
-              <li key={item.n} className="border-b border-r border-steel p-6">
-                <p className="mono text-xs text-steel">{item.n}</p>
-                <h3 className="mt-10 text-[22px] font-medium leading-none tracking-[-0.03em]">
-                  {item.title}
-                </h3>
-                <p className="mt-4 text-base leading-normal">{item.body}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
       </section>
 
       <section id="company" className="bg-paper pt-[72px] text-ink lg:pt-[144px]">

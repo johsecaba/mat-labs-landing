@@ -281,3 +281,50 @@ section[id] {
     scroll-margin-top: -72px;
   }
 }
+
+/* Markets carousel */
+@keyframes mk-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes mk-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.mk-progress { animation: mk-fill linear forwards; }
+.mk-copy { animation: mk-rise 0.6s ease-out both; }
+@media (prefers-reduced-motion: reduce) {
+  .mk-copy { animation: none; }
+}
+
+/* Active market tab: gradient perimeter in the hero video's edge colors. */
+.mk-tab-on::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    #d8ff4a 0%,
+    rgba(64, 255, 140, 0.7) 30%,
+    rgba(255, 70, 220, 0.45) 70%,
+    rgba(255, 150, 60, 0.15) 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+.mk-tab-on {
+  box-shadow: 0 0 22px -6px rgba(180, 255, 80, 0.35), inset 0 12px 20px -14px rgba(216, 255, 74, 0.35);
+}
+.mk-progress {
+  background: linear-gradient(to right, #d8ff4a, rgba(64, 255, 140, 1) 55%, rgba(255, 70, 220, 0.95));
+  box-shadow: 0 0 10px rgba(200, 255, 70, 0.6);
+}
+.mk-link {
+  border-bottom: 0;
+  background: linear-gradient(to right, #d8ff4a, rgba(64, 255, 140, 1) 55%, rgba(255, 70, 220, 0.9)) left bottom / 100% 1.5px no-repeat;
+}
+.mk-link:hover { background-size: 100% 2.5px; }
