@@ -14,7 +14,7 @@ export function Footer() {
             <span className="sr-only">Labs, home</span>
           </a>
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-steel-on-dark">
-            {site.legalName}. Spatial Phase Imaging and Figura OS.
+            {site.legalName}. Spatial Phase Imaging and Figure OS.
           </p>
         </div>
 
