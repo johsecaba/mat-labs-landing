@@ -41,3 +41,14 @@ Demo requests open a mailto draft to `hello@mat.co`. That address is a placehold
 ## Media
 
 The hero is the only video (`public/media/hero-video-1080p.mp4`). Other sections use stills. `components/still.tsx` and `components/parallax-still.tsx` accept an optional `videoSrc` when a later loop exists. Leave it unset until the file is in the repo. Do not render an empty player.
+
+## Third-party assets
+
+- **3D head model (sample viewer).** "Infinite, 3D Head Scan" by Lee Perry-Smith
+  ([Triple Gangers](https://www.triplegangers.com)), licensed under
+  [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Obtained from the
+  three.js examples (`examples/models/gltf/LeePerrySmith`). Files:
+  `public/models/head.glb`, `public/models/head-color.jpg`. Original notice in
+  `public/models/LeePerrySmith_License.txt`. The viewer is labelled as a sample
+  model, not MAT Labs sensor output.
+- three.js, @react-three/fiber and @react-three/drei are MIT licensed.
