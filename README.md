@@ -51,6 +51,6 @@ The hero is the only video (`public/media/hero-video-1080p.mp4`). Other sections
 | Tab | File | Source | Author | License |
 | --- | --- | --- | --- | --- |
 | Ore Mining | `ore-mining.webp` (cropped) | https://commons.wikimedia.org/wiki/File:Mina_de_Chuquicamata,_Calama,_Chile,_2016-02-01,_DD_114.JPG | Diego Delso | CC BY-SA 4.0 (attribution required) |
-| Commerce | `commerce.webp` | https://www.pexels.com/photo/couple-buying-groceries-at-a-supermarket-4199490/ | Jack Sparrow | Pexels License (free commercial use) |
+| Commerce | `commerce.webp` | Original AI-generated image (palm-pay checkout scene) | MAT Labs | Own material |
 | Automotive | `automotive.webp` | Still frame from MAT Labs hero video (`hero-video-1080p.mp4`, about 10.5 s) | MAT Labs | Own material |
 | Robotics | `robotics.webp` (cropped) | https://commons.wikimedia.org/wiki/File:Quadcopter_camera_drone_in_flight.jpg | Josh Sorenson | CC0 |
