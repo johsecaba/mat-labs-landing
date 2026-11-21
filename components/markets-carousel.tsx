@@ -24,7 +24,7 @@ const items = [
     link: "Talk to us about Commerce",
     src: "/media/markets/commerce.webp",
     alt: "Two shoppers paying at a supermarket checkout while a cashier serves them.",
-    position: "50% 40%",
+    position: "50% 45%",
   },
   {
     id: "automotive",
