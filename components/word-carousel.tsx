@@ -17,7 +17,7 @@ export function WordCarousel({ words, interval = 2200 }: Props) {
   }, [words.length, interval]);
 
   return (
-    <span className="relative inline-grid h-[1.1em] overflow-hidden align-bottom">
+    <span className="relative -mb-[0.2em] inline-grid overflow-hidden pb-[0.2em] align-top">
       {/* Invisible copies reserve the width of the longest word. */}
       {words.map((w) => (
         <span key={`size-${w}`} className="invisible col-start-1 row-start-1">
@@ -31,7 +31,7 @@ export function WordCarousel({ words, interval = 2200 }: Props) {
         return (
           <span
             key={w}
-            className={`col-start-1 row-start-1 transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${state}`}
+            className={`edge-text col-start-1 row-start-1 transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${state}`}
           >
             {w}
           </span>
