@@ -54,3 +54,14 @@ The hero is the only video (`public/media/hero-video-1080p.mp4`). Other sections
 | Commerce | `commerce.webp` | Original AI-generated image (palm-pay checkout scene) | MAT Labs | Own material |
 | Automotive | `automotive.webp` | Still frame from MAT Labs hero video (`hero-video-1080p.mp4`, about 10.5 s) | MAT Labs | Own material |
 | Robotics | `robotics.webp` (cropped) | https://commons.wikimedia.org/wiki/File:Quadcopter_camera_drone_in_flight.jpg | Josh Sorenson | CC0 |
+
+## Third-party assets
+
+- **3D head model (sample viewer).** "Infinite, 3D Head Scan" by Lee Perry-Smith
+  ([Triple Gangers](https://www.triplegangers.com)), licensed under
+  [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Obtained from the
+  three.js examples (`examples/models/gltf/LeePerrySmith`). Files:
+  `public/models/head.glb`, `public/models/head-color.jpg`. Original notice in
+  `public/models/LeePerrySmith_License.txt`. The viewer is labelled as a sample
+  model, not MAT Labs sensor output.
+- three.js, @react-three/fiber and @react-three/drei are MIT licensed.

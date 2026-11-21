@@ -1,7 +1,7 @@
 import { DemoForm } from "@/components/demo-form";
 import { HeroMedia } from "@/components/hero-media";
-import { ParallaxStill } from "@/components/parallax-still";
 import { MarketsCarousel } from "@/components/markets-carousel";
+import { MeshViewer } from "@/components/mesh-viewer";
 import { Reveal } from "@/components/reveal";
 import { Still } from "@/components/still";
 import { contactEmail } from "@/lib/site";
@@ -184,11 +184,7 @@ export default function HomePage() {
           </Reveal>
         </div>
         <Reveal className="shell mt-12">
-          <ParallaxStill
-            src="/media/high-resolution-mesh.png"
-            alt="A face shown as a high-resolution mesh, pixels on target, a triangle mesh, and a surface texture map."
-            sizes="(min-width: 1024px) 880px, 100vw"
-          />
+          <MeshViewer />
           <p className="mt-4 max-w-xl text-sm leading-normal text-steel-on-dark">
             High-resolution mesh. Pixels on target. Triangle mesh. Surface
             texture map.
