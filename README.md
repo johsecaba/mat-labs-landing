@@ -36,7 +36,7 @@ Demo requests open a mailto draft to `hello@mat.co`. That address is a placehold
 
 ## Mark
 
-`public/brand/mark.svg` is a trace of the MAT app-icon mark for the dark UI. `public/brand/app-icon.png` is the icon used for the favicon, Apple touch icon, and Organization logo. Replace the SVG if a finished vector master is available.
+`public/brand/mark.svg` is the MAT bowtie mark (vector, built from the original logo geometry). `public/brand/app-icon.png` is the icon used for the favicon, Apple touch icon, and Organization logo.
 
 ## Media
 
