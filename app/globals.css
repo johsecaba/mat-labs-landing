@@ -267,3 +267,7 @@ body {
 @supports not (-webkit-text-stroke: 1px black) {
   .edge-text { color: #d8ff4a; }
 }
+
+.h1.hero-h1 {
+  line-height: 1.16;
+}

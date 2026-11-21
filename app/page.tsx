@@ -113,7 +113,7 @@ export default function HomePage() {
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,#000_0%,rgba(0,0,0,0.78)_24%,rgba(0,0,0,0.12)_55%,rgba(0,0,0,0.4)_100%)]" />
         </div>
         <div className="shell relative z-10 flex min-h-[100svh] flex-col justify-end pb-16 pt-28 md:pb-24">
-          <h1 className="h1">
+          <h1 className="h1 hero-h1">
             <span className="sr-only">
               Revolutionizing Vision. Reinventing mining, security, autonomy,
               robotics, payments, drones and cities.
