@@ -33,7 +33,7 @@ export function rootMetadata(locale: Locale): Metadata {
       description: t.description,
       images: ogImage(t.ogAlt),
     },
-    robots: { index: true, follow: true },
+    robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
   };
 }
 
