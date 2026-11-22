@@ -116,7 +116,7 @@ export const en = {
       title: "Named for the eye.",
       body: "MAT comes from μάτι, máti, the Greek word for eye. The company is named for the work: the closest thing to a human eye for the machines of this era.",
       matiBody: "Eye. The word the company is named for.",
-      figuraTitle: "Figure",
+      figuraTitle: "Figura",
       figuraBody: "From the Latin figura, shape. FiguraOS is how the eye reads form.",
       vexmBody:
         "Vision, from the machine. A play on deus ex machina. Nothing is lowered in from outside. The machine produces the sight.",
