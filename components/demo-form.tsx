@@ -16,39 +16,58 @@ const interests = [
 export function DemoForm() {
   const [status, setStatus] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const name = String(data.get("name") ?? "").trim();
-    const organization = String(data.get("organization") ?? "").trim();
-    const email = String(data.get("email") ?? "").trim();
-    const interest = String(data.get("interest") ?? "").trim();
-    const message = String(data.get("message") ?? "").trim().slice(0, 2000);
-    const subject = `MAT Labs demo request — ${organization.replace(/[\r\n]/g, " ")}`.slice(
-      0,
-      180,
-    );
-    const body = [
-      `Name: ${name}`,
-      `Organization: ${organization}`,
-      `Email: ${email}`,
-      `Interest: ${interest}`,
-      "",
-      message,
-    ].join("\n");
+  const [sending, setSending] = useState(false);
 
-    window.location.href = `mailto:${demoEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setStatus("Opening an email draft. Nothing was sent to a server.");
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const payload = Object.fromEntries(
+      ["name", "organization", "email", "interest", "message", "website"].map((k) => [
+        k,
+        String(data.get(k) ?? "").trim(),
+      ]),
+    );
+
+    setSending(true);
+    setStatus("Sending…");
+    try {
+      const res = await fetch("/api/demo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      form.reset();
+      setStatus("Thanks. Your request was sent. We'll be in touch shortly.");
+    } catch {
+      // Fallback: open a pre-filled draft in the visitor's mail app.
+      const subject = `MAT Labs demo request: ${payload.organization}`.slice(0, 180);
+      const body = [
+        `Name: ${payload.name}`,
+        `Organization: ${payload.organization}`,
+        `Email: ${payload.email}`,
+        `Interest: ${payload.interest}`,
+        "",
+        payload.message.slice(0, 2000),
+      ].join("\n");
+      window.location.href = `mailto:${demoEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      setStatus(`We couldn't send it directly, so we opened an email to ${demoEmail}.`);
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
     <form
-      action={`mailto:${demoEmail}`}
-      method="post"
-      encType="text/plain"
       onSubmit={handleSubmit}
       className="grid gap-8"
     >
+      <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor="demo-website">Website</label>
+        <input id="demo-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <div className="grid gap-8 sm:grid-cols-2">
         <div>
           <label className="field-label" htmlFor="demo-name">
@@ -129,8 +148,8 @@ export function DemoForm() {
       </div>
 
       <div className="flex flex-col items-start gap-4">
-        <button type="submit" className="btn btn-solid">
-          Request a demo
+        <button type="submit" className="btn btn-solid" disabled={sending}>
+          {sending ? "Sending…" : "Request a demo"}
         </button>
         <p role="status" className="min-h-6 text-sm text-steel-on-dark">
           {status}

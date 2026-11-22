@@ -326,14 +326,8 @@ export default function HomePage() {
             <p className="tag">Contact</p>
             <h2 className="h2 mt-6">Request a demo.</h2>
             <p className="mt-6 max-w-md text-[17px] leading-normal text-steel-on-dark">
-              Name the system and what it needs to see. This opens an email to{" "}
-              <a
-                href={`mailto:${demoEmail}`}
-                className="text-fg underline decoration-white/40 underline-offset-4"
-              >
-                {demoEmail}
-              </a>
-              . Nothing is sent to a server.
+              Name the system and what it needs to see. Your request goes straight
+              to our team.
             </p>
             <p className="mt-10 text-2xl font-medium tracking-[-0.03em]">
               Vision ex Machina
