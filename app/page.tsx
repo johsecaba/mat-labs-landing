@@ -98,7 +98,8 @@ export default function HomePage() {
             </span>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-normal">
-            The closest thing to a human eye for today’s machines.
+            The closest thing to a human eye for today’s machines.{" "}
+            <span className="whitespace-nowrap font-medium text-[#d8ff4a]">Not LiDAR.</span>
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <a href="#contact" className="btn btn-solid">
