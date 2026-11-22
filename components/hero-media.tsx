@@ -3,10 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const description =
-  "A roadway recorded by the vision stack, with vehicles marked and given a position in the scene.";
-
-export function HeroMedia() {
+export function HeroMedia({ description }: { description: string }) {
   const [allowMotion, setAllowMotion] = useState(false);
 
   useEffect(() => {

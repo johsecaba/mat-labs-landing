@@ -2,53 +2,35 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import type { Messages } from "@/lib/i18n/en";
 
 const DURATION = 6000;
 
-const items = [
+const media = [
   {
     id: "ore-mining",
-    label: "Ore Mining",
-    headline: "Vision for the haul road.",
-    sub: "Distance and motion for heavy equipment, in dust, glare, and low light.",
-    link: "Talk to us about Ore Mining",
     src: "/media/markets/ore-mining.webp",
-    alt: "A Komatsu haul truck driving up a road inside an open-pit mine.",
     position: "68% 55%",
   },
   {
     id: "commerce",
-    label: "Commerce",
-    headline: "Know what happens at the counter.",
-    sub: "People, pose, and motion in stores and at checkouts, from one 3D stream.",
-    link: "Talk to us about Commerce",
     src: "/media/markets/commerce.webp",
-    alt: "Two shoppers paying at a supermarket checkout while a cashier serves them.",
     position: "50% 45%",
   },
   {
     id: "automotive",
-    label: "Automotive",
-    headline: "The road, in depth.",
-    sub: "Range and position for every vehicle in the scene, marked in the frame.",
-    link: "Talk to us about Automotive",
     src: "/media/markets/automotive.webp",
-    alt: "A highway scene rendered in false color, with vehicles labeled by range and position.",
     position: "50% 50%",
   },
   {
     id: "robotics",
-    label: "Robotics",
-    headline: "Eyes for machines that move.",
-    sub: "Onboard 3D vision for drones and robots that navigate and inspect.",
-    link: "Talk to us about Robotics",
     src: "/media/markets/robotics.webp",
-    alt: "A quadcopter drone hovering in flight against a cloudy sky.",
     position: "50% 45%",
   },
 ] as const;
 
-export function MarketsCarousel() {
+export function MarketsCarousel({ t }: { t: Messages["home"]["markets"] }) {
+  const items = media.map((m, i) => ({ ...m, ...t.items[i] }));
   const [active, setActive] = useState(0);
   const [hover, setHover] = useState(false);
   const [visible, setVisible] = useState(true);
@@ -149,7 +131,7 @@ export function MarketsCarousel() {
 
             <div
               role="tablist"
-              aria-label="Markets"
+              aria-label={t.tablist}
               onKeyDown={onKey}
               className="absolute inset-x-0 bottom-0 grid grid-cols-2 border-t border-white/10 bg-black/35 backdrop-blur-xl md:grid-cols-4"
             >
@@ -202,11 +184,11 @@ export function MarketsCarousel() {
         </div>
       </div>
       <p className="mt-3 text-xs text-[#8c8c95]">
-        Ore Mining photo: Diego Delso,{" "}
+        {t.creditPrefix}{" "}
         <a className="underline" href="https://creativecommons.org/licenses/by-sa/4.0/">
           CC BY-SA 4.0
         </a>
-        , via Wikimedia Commons.
+        {t.creditSuffix}
       </p>
     </div>
   );

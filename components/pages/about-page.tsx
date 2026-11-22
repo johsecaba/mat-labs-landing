@@ -1,91 +1,59 @@
-import type { Metadata } from "next";
 import { Reveal } from "@/components/reveal";
-import { site } from "@/lib/site";
-
-const title = "About";
-const description =
-  "MAT Labs builds Spatial Phase Imaging and FiguraOS for U.S. enterprise and government. MAT is Greek for eye. The markets we build for are in the millions and billions.";
-
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/about" },
-  openGraph: {
-    type: "website",
-    url: `${site.url}/about`,
-    siteName: site.name,
-    title: `${title} — MAT Labs`,
-    description,
-  },
-  twitter: { card: "summary_large_image", title: `${title} — MAT Labs`, description },
-};
+import { getMessages, localePath, type Locale } from "@/lib/i18n";
 
 const stats = [
   {
     value: "3.1M",
-    label: "small drones will fly in U.S. airspace by 2029.",
-    note: "FAA, base forecast for 2029: 1.93 million recreational plus 1.18 million commercial.",
     href: "https://www.faa.gov/data_research/aviation/aerospace_forecasts/2025-uas-and-aam-summary.pdf",
     source: "FAA Aerospace Forecast FY 2025–2045",
   },
   {
     value: "50M+",
-    label: "consumer robots will ship worldwide in 2027, most of them for the home.",
-    note: "Statista Market Insights forecast, units per year. Includes robot vacuums, toys and consumer drones.",
     href: "https://www.statista.com/chart/9089/worldwide-personal-robot-sales-forecast/",
     source: "Statista",
   },
   {
     value: "1.1B",
-    label: "cars on the road have no driver-assistance sensing. They drive without machine vision.",
-    note: "Yole Group, 2022: 12.3% of 1.3 billion cars on the road had ADAS. The other 87.7% is about 1.14 billion.",
     href: "https://www.yolegroup.com/press-release/automotive-industry-a-massive-ai-powered-transformation-is-ongoing/",
     source: "Yole Group",
   },
   {
     value: "3.6B",
-    label: "credit cards that palm payments powered by MAT can replace.",
-    note: "Nilson Report, year-end 2024: 3.61 billion credit cards on the global networks. Debit and prepaid add 14.5 billion more.",
     href: "https://nilsonreport.com/wp-content/uploads/NilsonReport_1288_2F25.pdf",
     source: "Nilson Report, issue 1288",
   },
 ] as const;
 
-export default function AboutPage() {
+export function AboutPage({ locale }: { locale: Locale }) {
+  const m = getMessages(locale);
+  const t = m.about;
   return (
     <main id="content" className="bg-black text-fg">
       <section className="shell pb-[72px] pt-32 lg:pb-[120px] lg:pt-48" aria-labelledby="about-title">
         <Reveal>
-          <p className="tag text-steel-on-dark">About</p>
+          <p className="tag text-steel-on-dark">{t.tag}</p>
           <h1 id="about-title" className="h1 mt-8 max-w-4xl">
-            We give machines an eye.
+            {t.h1}
           </h1>
           <div className="mt-10 grid gap-6 lg:grid-cols-12">
             <div className="max-w-xl space-y-5 text-lg leading-normal text-steel-on-dark lg:col-span-6">
-              <p>
-                MAT Labs builds Spatial Phase Imaging (SPI) and FiguraOS, the software that reads people, pose and
-                form from it. We sell to U.S. enterprises and U.S. government
-                programs.
-              </p>
-              <p>
-                MAT comes from the Greek máti, the eye. Our line is Vision ex
-                Machina. Here is how many machines are waiting for one.
-              </p>
+              <p>{t.p1}</p>
+              <p>{t.p2}</p>
             </div>
           </div>
         </Reveal>
       </section>
 
-      <section aria-label="Market figures">
+      <section aria-label={t.figures}>
         <ul>
-          {stats.map((s) => (
+          {stats.map((s, i) => (
             <li key={s.value} className="border-t border-steel">
               <Reveal>
                 <div className="shell grid items-end gap-6 py-10 lg:grid-cols-12 lg:gap-12 lg:py-14">
                   <div className="lg:col-span-4">
-                    <p className="max-w-xs text-[15px] leading-normal">{s.label}</p>
+                    <p className="max-w-xs text-[15px] leading-normal">{t.stats[i].label}</p>
                     <p className="mt-4 max-w-xs text-xs leading-normal text-steel-on-dark">
-                      {s.note}{" "}
+                      {t.stats[i].note}{" "}
                       <a
                         href={s.href}
                         target="_blank"
@@ -106,9 +74,9 @@ export default function AboutPage() {
 
       <section className="border-t border-steel">
         <div className="shell flex flex-col items-start gap-8 py-16 lg:flex-row lg:items-center lg:justify-between lg:py-24">
-          <h2 className="h2 max-w-xl">Building for one of these?</h2>
-          <a href="/#contact" className="btn btn-solid">
-            Request a demo
+          <h2 className="h2 max-w-xl">{t.ctaTitle}</h2>
+          <a href={localePath(locale, "/#contact")} className="btn btn-solid">
+            {t.cta}
           </a>
         </div>
       </section>

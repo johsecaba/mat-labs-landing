@@ -2,9 +2,14 @@
 
 import { useEffect, useState } from "react";
 
-type Props = { words: string[]; interval?: number };
+type Props = {
+  words: string[];
+  interval?: number;
+  /** Size to the current word instead of the longest one. Use when text follows the word. */
+  fit?: boolean;
+};
 
-export function WordCarousel({ words, interval = 2200 }: Props) {
+export function WordCarousel({ words, interval = 2200, fit = false }: Props) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -19,7 +24,7 @@ export function WordCarousel({ words, interval = 2200 }: Props) {
   return (
     <span className="relative -mb-[0.2em] inline-grid overflow-hidden pb-[0.2em] align-top">
       {/* Invisible copies reserve the width of the longest word. */}
-      {words.map((w) => (
+      {(fit ? [words[index]] : words).map((w) => (
         <span key={`size-${w}`} className="invisible col-start-1 row-start-1">
           {w}
         </span>
@@ -31,7 +36,9 @@ export function WordCarousel({ words, interval = 2200 }: Props) {
         return (
           <span
             key={w}
-            className={`edge-text col-start-1 row-start-1 transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${state}`}
+            className={`edge-text col-start-1 row-start-1 transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${state} ${
+              fit && offset !== 0 ? "absolute left-0 top-0 whitespace-nowrap" : ""
+            }`}
           >
             {w}
           </span>

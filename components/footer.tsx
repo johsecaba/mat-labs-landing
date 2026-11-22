@@ -1,32 +1,36 @@
 import { Logo } from "@/components/logo";
 import { UsFlag } from "@/components/us-flag";
-import { contactEmail, nav, site } from "@/lib/site";
+import { localePath, type Locale } from "@/lib/i18n/config";
+import type { Messages } from "@/lib/i18n/en";
+import { localizedNav } from "@/lib/i18n/nav";
+import { contactEmail, site } from "@/lib/site";
 
-export function Footer() {
+export function Footer({ locale, t, navT }: { locale: Locale; t: Messages["footer"]; navT: Messages["nav"] }) {
+  const nav = localizedNav(locale, navT);
   const year = new Date().getFullYear();
 
   return (
     <footer className="border-t border-steel bg-black text-fg">
       <div className="border-b border-steel">
         <div className="shell flex items-center gap-5 py-10 sm:py-12">
-          <UsFlag className="h-10 w-auto shrink-0 sm:h-14" />
+          <UsFlag className="h-10 w-auto shrink-0 sm:h-14" label={t.flag} />
           <p className="text-2xl font-medium tracking-[-0.03em] sm:text-4xl">Made in U.S.A</p>
         </div>
       </div>
       <div className="shell grid gap-12 py-16 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <a href="/#top" className="inline-flex items-center gap-2.5">
+          <a href={localePath(locale, "/#top")} className="inline-flex items-center gap-2.5">
             <Logo className="h-5 w-auto" />
             <span className="text-[15px] font-medium tracking-[-0.03em]">MAT</span>
-            <span className="sr-only">Labs, home</span>
+            <span className="sr-only">{navT.home}</span>
           </a>
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-steel-on-dark">
-            {site.legalName}. Spatial Phase Imaging and FiguraOS.
+            {site.legalName}. {t.tagline}
           </p>
         </div>
 
-        <nav className="lg:col-span-3" aria-label="Footer">
-          <p className="tag text-steel-on-dark">Index</p>
+        <nav className="lg:col-span-3" aria-label={t.nav}>
+          <p className="tag text-steel-on-dark">{t.index}</p>
           <ul className="mt-4 space-y-3">
             {nav.map((item) => (
               <li key={item.href}>
@@ -36,15 +40,15 @@ export function Footer() {
               </li>
             ))}
             <li>
-              <a href="/#contact" className="text-sm underline-offset-4 hover:underline">
-                Contact
+              <a href={localePath(locale, "/#contact")} className="text-sm underline-offset-4 hover:underline">
+                {navT.contact}
               </a>
             </li>
           </ul>
         </nav>
 
         <div className="lg:col-span-4">
-          <p className="tag text-steel-on-dark">Contact</p>
+          <p className="tag text-steel-on-dark">{t.contact}</p>
           <a
             href={`mailto:${contactEmail}`}
             className="mt-4 inline-block text-lg font-medium tracking-[-0.03em] underline decoration-white/30 underline-offset-4 hover:decoration-white"

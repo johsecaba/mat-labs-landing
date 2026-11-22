@@ -364,3 +364,55 @@ section[id] {
   -webkit-text-fill-color: transparent;
   padding-right: 0.06em;
 }
+
+/* ---------- Localized typography ---------- */
+/* Japanese and Korean: Inter Tight for Latin glyphs, Noto Sans for CJK. */
+html:lang(ja) {
+  --font-brand: var(--font-brand-file), var(--font-cjk-file), "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "Yu Gothic", Meiryo, sans-serif;
+}
+
+html:lang(ko) {
+  --font-brand: var(--font-brand-file), var(--font-cjk-file), "Apple SD Gothic Neo", "Malgun Gothic",
+    sans-serif;
+}
+
+/* CJK reads cramped with Latin display tracking and a 1.0 line height. */
+html:lang(ja) :is(.h1, .h2, h3),
+html:lang(ko) :is(.h1, .h2, h3) {
+  letter-spacing: -0.01em;
+}
+
+html:lang(ja) :is(.h1, .h2),
+html:lang(ko) :is(.h1, .h2) {
+  line-height: 1.2;
+}
+
+html:lang(ja) .tag,
+html:lang(ko) .tag,
+html:lang(ja) .field-label,
+html:lang(ko) .field-label,
+html:lang(ja) .btn,
+html:lang(ko) .btn {
+  letter-spacing: 0.04em;
+}
+
+html:lang(ja) body {
+  line-break: strict;
+}
+
+html:lang(ja) :is(.h1, .h2) {
+  word-break: auto-phrase;
+}
+
+/* Korean wraps between words, not inside them. */
+html:lang(ko) body {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* German compounds are long: hyphenate headings rather than overflow. */
+html:lang(de) :is(.h1, .h2, h3) {
+  hyphens: auto;
+  overflow-wrap: break-word;
+}

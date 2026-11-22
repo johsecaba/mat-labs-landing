@@ -2,9 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { Logo } from "@/components/logo";
-import { nav } from "@/lib/site";
+import { LanguageList, LanguageMenu } from "@/components/language-switcher";
+import { localePath, type Locale } from "@/lib/i18n/config";
+import type { Messages } from "@/lib/i18n/en";
+import { localizedNav } from "@/lib/i18n/nav";
 
-export function Header() {
+export function Header({ locale, t }: { locale: Locale; t: Messages["nav"] }) {
+  const nav = localizedNav(locale, t);
+  const home = localePath(locale, "/#top");
+  const contact = localePath(locale, "/#contact");
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -44,27 +50,28 @@ export function Header() {
       }`}
     >
       <div className="shell flex h-16 items-center justify-between">
-        <a href="/#top" className="flex items-center gap-2.5 text-fg">
+        <a href={home} className="flex items-center gap-2.5 text-fg">
           <Logo className="h-5 w-auto" />
           <span className="text-[15px] font-medium tracking-[-0.03em]">MAT</span>
-          <span className="sr-only">Labs, home</span>
+          <span className="sr-only">{t.home}</span>
         </a>
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-8 lg:flex" aria-label={t.primary}>
           {nav.map((item) => (
             <a key={item.href} href={item.href} className="tag text-fg">
-              <span style={item.label === "FiguraOS" ? { textTransform: "none" } : undefined}>{item.label}</span>
+              <span style={item.raw ? { textTransform: "none" } : undefined}>{item.label}</span>
             </a>
           ))}
         </nav>
 
         <div className="flex items-center gap-3">
+          <LanguageMenu locale={locale} label={t.language} />
           <a
-            href="/#contact"
+            href={contact}
             className="btn btn-solid"
             onClick={() => setOpen(false)}
           >
-            Contact
+            {t.contact}
           </a>
           <button
             type="button"
@@ -73,7 +80,7 @@ export function Header() {
             aria-controls="mobile-nav"
             onClick={() => setOpen((value) => !value)}
           >
-            {open ? "Close" : "Menu"}
+            {open ? t.close : t.menu}
           </button>
         </div>
       </div>
@@ -81,7 +88,7 @@ export function Header() {
       {open ? (
         <nav
           id="mobile-nav"
-          aria-label="Primary"
+          aria-label={t.primary}
           className="border-t border-steel bg-black lg:hidden"
         >
           <ul className="shell flex flex-col py-2">
@@ -92,18 +99,21 @@ export function Header() {
                   className="block py-4 text-lg font-medium tracking-[-0.03em]"
                   onClick={() => setOpen(false)}
                 >
-                  <span style={item.label === "FiguraOS" ? { textTransform: "none" } : undefined}>{item.label}</span>
+                  <span style={item.raw ? { textTransform: "none" } : undefined}>{item.label}</span>
                 </a>
               </li>
             ))}
-            <li>
+            <li className="border-b border-steel">
               <a
-                href="/#contact"
+                href={contact}
                 className="block py-4 text-lg font-medium tracking-[-0.03em]"
                 onClick={() => setOpen(false)}
               >
-                Contact
+                {t.contact}
               </a>
+            </li>
+            <li>
+              <LanguageList locale={locale} label={t.language} />
             </li>
           </ul>
         </nav>

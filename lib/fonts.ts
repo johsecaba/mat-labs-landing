@@ -1,4 +1,4 @@
-import { IBM_Plex_Mono, Inter_Tight } from "next/font/google";
+import { IBM_Plex_Mono, Inter_Tight, Noto_Sans_JP, Noto_Sans_KR } from "next/font/google";
 
 /**
  * Stand-in for Helvetica Now (Monotype). The license is not in this repo.
@@ -20,6 +20,26 @@ export const monoFont = IBM_Plex_Mono({
   weight: ["400", "500"],
   display: "swap",
   variable: "--font-mono-file",
+});
+
+/**
+ * CJK faces for /ja and /ko. Inter Tight has no CJK glyphs, so Latin text
+ * keeps Inter Tight and the browser falls back to Noto per glyph.
+ * Google serves these in unicode-range slices, so only used glyphs load.
+ * preload is off because next/font has no CJK subset to preload.
+ */
+export const notoSansJP = Noto_Sans_JP({
+  weight: ["400", "500"],
+  display: "swap",
+  preload: false,
+  variable: "--font-cjk-file",
+});
+
+export const notoSansKR = Noto_Sans_KR({
+  weight: ["400", "500"],
+  display: "swap",
+  preload: false,
+  variable: "--font-cjk-file",
 });
 
 /*

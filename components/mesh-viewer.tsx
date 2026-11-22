@@ -4,18 +4,15 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ViewMode, ZoomFn } from "@/components/mesh-viewer-canvas";
+import type { Messages } from "@/lib/i18n/en";
 
 const Canvas3D = dynamic(() => import("@/components/mesh-viewer-canvas"), {
   ssr: false,
 });
 
-const modes: { id: ViewMode; label: string }[] = [
-  { id: "mesh", label: "Mesh" },
-  { id: "pixels", label: "Pixels" },
-  { id: "surface", label: "Surface" },
-];
+const modes: ViewMode[] = ["mesh", "pixels", "surface"];
 
-export function MeshViewer() {
+export function MeshViewer({ t }: { t: Messages["home"]["mesh"] }) {
   const box = useRef<HTMLDivElement>(null);
   const zoomRef = useRef<ZoomFn | null>(null);
   const [active, setActive] = useState(false); // lazy-load trigger
@@ -74,7 +71,7 @@ export function MeshViewer() {
       >
         <Image
           src="/media/high-resolution-mesh.png"
-          alt="A face shown as a high-resolution mesh, pixels on target, a triangle mesh, and a surface texture map."
+          alt={t.alt}
           fill
           sizes="(min-width: 800px) 760px, 100vw"
           className="object-contain"
@@ -90,13 +87,13 @@ export function MeshViewer() {
         ) : null}
 
         <p className="pointer-events-none absolute left-4 top-4 z-10 text-xs text-steel-on-dark">
-          Drag to rotate · Ctrl + scroll to zoom
+          {t.hint}
         </p>
 
         <div className="absolute right-3 top-3 z-10 flex flex-col border border-white/20 bg-black/70 backdrop-blur">
           <button
             type="button"
-            aria-label="Zoom in"
+            aria-label={t.zoomIn}
             onClick={() => zoomRef.current?.(0.8)}
             className="h-9 w-9 text-lg leading-none text-fg hover:bg-white/10"
           >
@@ -104,7 +101,7 @@ export function MeshViewer() {
           </button>
           <button
             type="button"
-            aria-label="Zoom out"
+            aria-label={t.zoomOut}
             onClick={() => zoomRef.current?.(1.25)}
             className="h-9 w-9 border-t border-white/20 text-lg leading-none text-fg hover:bg-white/10"
           >
@@ -114,26 +111,26 @@ export function MeshViewer() {
 
         <div
           role="group"
-          aria-label="View mode"
+          aria-label={t.viewMode}
           className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 border border-white/20 bg-black/70 backdrop-blur"
         >
-          {modes.map((m) => (
+          {modes.map((id) => (
             <button
-              key={m.id}
+              key={id}
               type="button"
-              aria-pressed={mode === m.id}
-              onClick={() => setMode(m.id)}
+              aria-pressed={mode === id}
+              onClick={() => setMode(id)}
               className={`px-4 py-2 text-[13px] uppercase tracking-[0.08em] transition-colors ${
-                mode === m.id ? "bg-fg text-black" : "text-fg hover:bg-white/10"
+                mode === id ? "bg-fg text-black" : "text-fg hover:bg-white/10"
               }`}
             >
-              {m.label}
+              {t.modes[id]}
             </button>
           ))}
         </div>
       </div>
       <p className="mt-4 text-sm leading-normal text-steel-on-dark">
-        Sample model for illustration. Not MAT Labs sensor output.
+        {t.disclaimer}
       </p>
     </div>
   );

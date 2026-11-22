@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import type { Locale } from "@/lib/i18n/config";
+import type { Messages } from "@/lib/i18n/en";
 import { demoEmail } from "@/lib/site";
 
 const interests = [
@@ -13,7 +15,7 @@ const interests = [
   "Other",
 ] as const;
 
-export function DemoForm() {
+export function DemoForm({ locale, t }: { locale: Locale; t: Messages["form"] }) {
   const [status, setStatus] = useState("");
 
   const [sending, setSending] = useState(false);
@@ -30,16 +32,16 @@ export function DemoForm() {
     );
 
     setSending(true);
-    setStatus("Sending…");
+    setStatus(t.sending);
     try {
       const res = await fetch("/api/demo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ ...payload, locale }),
       });
       if (!res.ok) throw new Error(String(res.status));
       form.reset();
-      setStatus("Thanks. Your request was sent. We'll be in touch shortly.");
+      setStatus(t.sent);
     } catch {
       // Fallback: open a pre-filled draft in the visitor's mail app.
       const subject = `MAT Labs demo request: ${payload.organization}`.slice(0, 180);
@@ -48,11 +50,12 @@ export function DemoForm() {
         `Organization: ${payload.organization}`,
         `Email: ${payload.email}`,
         `Interest: ${payload.interest}`,
+        `Language: ${locale}`,
         "",
         payload.message.slice(0, 2000),
       ].join("\n");
       window.location.href = `mailto:${demoEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      setStatus(`We couldn't send it directly, so we opened an email to ${demoEmail}.`);
+      setStatus(t.fallback.replace("{email}", demoEmail));
     } finally {
       setSending(false);
     }
@@ -71,7 +74,7 @@ export function DemoForm() {
       <div className="grid gap-8 sm:grid-cols-2">
         <div>
           <label className="field-label" htmlFor="demo-name">
-            Name
+            {t.name}
           </label>
           <input
             id="demo-name"
@@ -84,7 +87,7 @@ export function DemoForm() {
         </div>
         <div>
           <label className="field-label" htmlFor="demo-organization">
-            Organization
+            {t.organization}
           </label>
           <input
             id="demo-organization"
@@ -100,7 +103,7 @@ export function DemoForm() {
       <div className="grid gap-8 sm:grid-cols-2">
         <div>
           <label className="field-label" htmlFor="demo-email">
-            Work email
+            {t.email}
           </label>
           <input
             id="demo-email"
@@ -113,7 +116,7 @@ export function DemoForm() {
         </div>
         <div>
           <label className="field-label" htmlFor="demo-interest">
-            Interest
+            {t.interest}
           </label>
           <select
             id="demo-interest"
@@ -123,11 +126,11 @@ export function DemoForm() {
             className="field"
           >
             <option value="" disabled>
-              Select a market
+              {t.select}
             </option>
             {interests.map((interest) => (
               <option key={interest} value={interest}>
-                {interest}
+                {t.interests[interest]}
               </option>
             ))}
           </select>
@@ -136,7 +139,7 @@ export function DemoForm() {
 
       <div>
         <label className="field-label" htmlFor="demo-message">
-          What should the system see?
+          {t.message}
         </label>
         <textarea
           id="demo-message"
@@ -149,7 +152,7 @@ export function DemoForm() {
 
       <div className="flex flex-col items-start gap-4">
         <button type="submit" className="btn btn-solid" disabled={sending}>
-          {sending ? "Sending…" : "Request a demo"}
+          {sending ? t.sending : t.submit}
         </button>
         <p role="status" className="min-h-6 text-sm text-steel-on-dark">
           {status}

@@ -1,6 +1,6 @@
-export function UsFlag({ className }: { className?: string }) {
+export function UsFlag({ className, label = "Flag of the United States" }: { className?: string; label?: string }) {
   return (
-    <svg viewBox="0 0 247 130" className={className} role="img" aria-label="Flag of the United States">
+    <svg viewBox="0 0 247 130" className={className} role="img" aria-label={label}>
       <rect width="247" height="130" fill="#fff" />
       <g fill="#B22234"><rect y="0" width="247" height="10" /><rect y="20" width="247" height="10" /><rect y="40" width="247" height="10" /><rect y="60" width="247" height="10" /><rect y="80" width="247" height="10" /><rect y="100" width="247" height="10" /><rect y="120" width="247" height="10" /></g>
       <rect width="98.8" height="70" fill="#3C3B6E" />
