@@ -1,6 +1,6 @@
 # MAT Labs
 
-> MAT Labs Inc. builds Spatial Phase Imaging (SPI), a 3D vision format, and Figure OS. MAT is building the closest thing to a human eye for today's machines. The name MAT comes from the Greek μάτι (máti), meaning eye. The line of the company is Oculi ex Machina — eyes from the machine.
+> MAT Labs Inc. builds Spatial Phase Imaging (SPI), a 3D vision format, and Figure OS. MAT is building the closest thing to a human eye for today's machines. The name MAT comes from the Greek μάτι (máti), meaning eye. The line of the company is Vision ex Machina — vision from the machine.
 
 MAT Labs is a business-to-business company. It supplies U.S. enterprises and U.S. government and defense programs. The product is a 3D sensor and a software stack. The sensor captures high-resolution visual and spatial data in real time as Spatial Phase Imaging. Figure OS runs modern vision models on that stream: people detection, pose tracking, high-resolution face and body meshes, pixels on target, and surface texture maps.
 
@@ -8,7 +8,7 @@ MAT Labs is a business-to-business company. It supplies U.S. enterprises and U.S
 
 - MAT derives from μάτι (máti), Greek for eye.
 - Named for the Latin figura, shape. Figure OS is the software.
-- Oculi ex Machina means "eyes from the machine," a play on deus ex machina. In English: Vision ex Machina.
+- Vision ex Machina means "vision from the machine," a play on deus ex machina.
 
 ## Markets
 
