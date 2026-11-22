@@ -155,7 +155,7 @@ export default function HomePage() {
       <section id="figura-os" className="section bg-black text-fg">
         <div className="shell grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.5fr)] lg:gap-12">
           <Reveal>
-            <p className="tag">FiguraOS</p>
+            <p className="tag" style={{ textTransform: "none" }}>FiguraOS</p>
             <h2 className="h2 mt-6">Software that reads shape.</h2>
             <p className="mt-6 max-w-md text-[17px] leading-normal text-steel-on-dark">
               Named for the Latin figura, shape. FiguraOS runs vision models on the

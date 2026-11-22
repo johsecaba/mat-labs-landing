@@ -53,7 +53,7 @@ export function Header() {
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
           {nav.map((item) => (
             <a key={item.href} href={item.href} className="tag text-fg">
-              {item.label}
+              <span style={item.label === "FiguraOS" ? { textTransform: "none" } : undefined}>{item.label}</span>
             </a>
           ))}
         </nav>
@@ -92,7 +92,7 @@ export function Header() {
                   className="block py-4 text-lg font-medium tracking-[-0.03em]"
                   onClick={() => setOpen(false)}
                 >
-                  {item.label}
+                  <span style={item.label === "FiguraOS" ? { textTransform: "none" } : undefined}>{item.label}</span>
                 </a>
               </li>
             ))}
