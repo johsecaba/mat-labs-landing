@@ -44,7 +44,7 @@ export function Header() {
       }`}
     >
       <div className="shell flex h-16 items-center justify-between">
-        <a href="#top" className="flex items-center gap-2.5 text-fg">
+        <a href="/#top" className="flex items-center gap-2.5 text-fg">
           <Logo className="h-5 w-auto" />
           <span className="text-[15px] font-medium tracking-[-0.03em]">MAT</span>
           <span className="sr-only">Labs, home</span>
@@ -60,7 +60,7 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#contact"
+            href="/#contact"
             className="btn btn-solid"
             onClick={() => setOpen(false)}
           >
@@ -98,7 +98,7 @@ export function Header() {
             ))}
             <li>
               <a
-                href="#contact"
+                href="/#contact"
                 className="block py-4 text-lg font-medium tracking-[-0.03em]"
                 onClick={() => setOpen(false)}
               >

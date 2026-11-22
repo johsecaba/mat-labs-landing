@@ -17,9 +17,9 @@ export const site = {
 } as const;
 
 export const nav = [
-  { href: "#technology", label: "Technology" },
-  { href: "#figure-os", label: "Figure OS" },
-  { href: "#markets", label: "Markets" },
-  { href: "#company", label: "Company" },
-  { href: "#merch", label: "Merch" },
+  { href: "/#technology", label: "Technology" },
+  { href: "/#figure-os", label: "Figure OS" },
+  { href: "/#markets", label: "Markets" },
+  { href: "/#company", label: "Company" },
+  { href: "/merch", label: "Merch" },
 ] as const;

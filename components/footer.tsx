@@ -8,7 +8,7 @@ export function Footer() {
     <footer className="border-t border-steel bg-black text-fg">
       <div className="shell grid gap-12 py-16 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <a href="#top" className="inline-flex items-center gap-2.5">
+          <a href="/#top" className="inline-flex items-center gap-2.5">
             <Logo className="h-5 w-auto" />
             <span className="text-[15px] font-medium tracking-[-0.03em]">MAT</span>
             <span className="sr-only">Labs, home</span>
@@ -29,7 +29,7 @@ export function Footer() {
               </li>
             ))}
             <li>
-              <a href="#contact" className="text-sm underline-offset-4 hover:underline">
+              <a href="/#contact" className="text-sm underline-offset-4 hover:underline">
                 Contact
               </a>
             </li>
