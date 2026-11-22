@@ -4,9 +4,9 @@ import { Reveal } from "@/components/reveal";
 const items = [
   {
     name: "The Shirt",
-    body: "Black tee. MAT ring on the chest, Vision ex Machina seal on the back.",
+    body: "Black tee. Small MAT mark on the chest, Vision ex Machina badge on the back.",
     src: "/media/merch/shirt.webp",
-    alt: "Black MAT Labs t-shirt with the MAT logo on the chest",
+    alt: "Black MAT Labs t-shirt, small MAT logo on the front and Vision ex Machina badge on the back",
     w: 1000,
     h: 563,
   },
@@ -36,7 +36,7 @@ export function Merch() {
           <p className="tag text-steel-on-dark">Merch</p>
           <div className="mt-8 grid gap-10 lg:grid-cols-12">
             <h2 id="merch-title" className="h2 lg:col-span-7">
-              Oculi ex Machina, wearable.
+              Vision ex Machina, wearable.
             </h2>
             <p className="max-w-md text-[17px] leading-normal text-steel-on-dark lg:col-span-5">
               MAT comes from the Greek máti, the eye. We put it on a shirt, a
@@ -55,7 +55,7 @@ export function Merch() {
                       alt={item.alt}
                       fill
                       sizes="(min-width: 1280px) 400px, (min-width: 768px) 30vw, 100vw"
-                      className={`transition-transform duration-700 group-hover:scale-[1.03] ${item.name === "The Shirt" ? "object-contain" : "object-cover"}`}
+                      className={`transition-transform duration-700 group-hover:scale-[1.03] ${"object-cover"}`}
                       
                      
                     />
