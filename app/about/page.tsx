@@ -63,8 +63,7 @@ export default function AboutPage() {
           <div className="mt-10 grid gap-6 lg:grid-cols-12">
             <div className="max-w-xl space-y-5 text-lg leading-normal text-steel-on-dark lg:col-span-6">
               <p>
-                MAT Labs builds Spatial Phase Imaging (SPI), licensed from
-                VyzAI, and Figure OS, the software that reads people, pose and
+                MAT Labs builds Spatial Phase Imaging (SPI) and Figure OS, the software that reads people, pose and
                 form from it. We sell to U.S. enterprises and U.S. government
                 programs.
               </p>
