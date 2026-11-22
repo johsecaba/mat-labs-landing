@@ -328,3 +328,25 @@ section[id] {
   background: linear-gradient(to right, #d8ff4a, rgba(64, 255, 140, 1) 55%, rgba(255, 70, 220, 0.9)) left bottom / 100% 1.5px no-repeat;
 }
 .mk-link:hover { background-size: 100% 2.5px; }
+
+/* Merch cards: hairline border that picks up the markets gradient on hover. */
+.merch-card {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: box-shadow 0.4s;
+}
+.merch-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+  background: linear-gradient(to bottom, #d8ff4a 0%, rgba(64, 255, 140, 0.7) 35%, rgba(255, 70, 220, 0.5) 75%, rgba(255, 150, 60, 0.2) 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+.merch-card:hover::before { opacity: 1; }

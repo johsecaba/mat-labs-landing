@@ -21,4 +21,5 @@ export const nav = [
   { href: "#figure-os", label: "Figure OS" },
   { href: "#markets", label: "Markets" },
   { href: "#company", label: "Company" },
+  { href: "#merch", label: "Merch" },
 ] as const;

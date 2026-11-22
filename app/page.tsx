@@ -1,5 +1,6 @@
 import { DemoForm } from "@/components/demo-form";
 import { HeroMedia } from "@/components/hero-media";
+import { Merch } from "@/components/merch";
 import { MarketsCarousel } from "@/components/markets-carousel";
 import { MeshViewer } from "@/components/mesh-viewer";
 import { Reveal } from "@/components/reveal";
@@ -319,6 +320,8 @@ export default function HomePage() {
           </Reveal>
         </div>
       </section>
+
+      <Merch />
 
       <section id="contact" className="section bg-black text-fg">
         <div className="shell grid gap-12 lg:grid-cols-12">
