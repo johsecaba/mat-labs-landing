@@ -4,6 +4,8 @@
  * have one address to change. The form only opens a mailto draft.
  */
 export const contactEmail = "hello@mat.co";
+/** Inbox that receives demo requests from the contact form. */
+export const demoEmail = "johan@mat.co";
 
 export const site = {
   name: "MAT Labs",

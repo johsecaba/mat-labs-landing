@@ -4,7 +4,7 @@ import { MarketsCarousel } from "@/components/markets-carousel";
 import { MeshViewer } from "@/components/mesh-viewer";
 import { Reveal } from "@/components/reveal";
 import { Still } from "@/components/still";
-import { contactEmail } from "@/lib/site";
+import { contactEmail, demoEmail } from "@/lib/site";
 import { WordCarousel } from "@/components/word-carousel";
 
 const stack = [
@@ -328,10 +328,10 @@ export default function HomePage() {
             <p className="mt-6 max-w-md text-[17px] leading-normal text-steel-on-dark">
               Name the system and what it needs to see. This opens an email to{" "}
               <a
-                href={`mailto:${contactEmail}`}
+                href={`mailto:${demoEmail}`}
                 className="text-fg underline decoration-white/40 underline-offset-4"
               >
-                {contactEmail}
+                {demoEmail}
               </a>
               . Nothing is sent to a server.
             </p>

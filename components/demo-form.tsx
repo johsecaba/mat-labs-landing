@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { contactEmail } from "@/lib/site";
+import { demoEmail } from "@/lib/site";
 
 const interests = [
   "Autonomous cars",
@@ -9,6 +9,7 @@ const interests = [
   "Robots and androids",
   "Intelligent CCTV",
   "Smart cities",
+  "Biometric payments",
   "Other",
 ] as const;
 
@@ -36,15 +37,13 @@ export function DemoForm() {
       message,
     ].join("\n");
 
-    // TODO(mat): Point this at the confirmed MAT Labs inbox. Today it only
-    // opens a draft in the visitor's mail client. No backend is attached.
-    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:${demoEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setStatus("Opening an email draft. Nothing was sent to a server.");
   }
 
   return (
     <form
-      action={`mailto:${contactEmail}`}
+      action={`mailto:${demoEmail}`}
       method="post"
       encType="text/plain"
       onSubmit={handleSubmit}
