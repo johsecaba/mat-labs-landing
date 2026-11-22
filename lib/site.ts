@@ -12,7 +12,7 @@ export const site = {
   title: "MAT Labs — Spatial Phase Imaging",
   description:
     "MAT Labs builds Spatial Phase Imaging, a 3D vision format, and Figure OS. The closest thing to a human eye for today's machines.",
-  slogan: "Oculi ex Machina",
+  slogan: "Vision ex Machina",
   email: contactEmail,
 } as const;
 

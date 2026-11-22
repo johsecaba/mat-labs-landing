@@ -245,12 +245,11 @@ export default function HomePage() {
             </div>
             <div className="py-8 md:pl-8">
               <h3 className="text-[22px] font-medium tracking-[-0.03em]">
-                Oculi ex Machina
+                Vision ex Machina
               </h3>
               <p className="mt-4 text-base leading-normal">
-                Eyes, from the machine. A play on deus ex machina. Nothing is
-                lowered in from outside. The machine produces the sight. In
-                English: Vision ex Machina.
+                Vision, from the machine. A play on deus ex machina. Nothing is
+                lowered in from outside. The machine produces the sight.
               </p>
             </div>
           </Reveal>
@@ -339,9 +338,9 @@ export default function HomePage() {
               . Nothing is sent to a server.
             </p>
             <p className="mt-10 text-2xl font-medium tracking-[-0.03em]">
-              Oculi ex Machina
+              Vision ex Machina
             </p>
-            <p className="mt-2 text-sm text-steel-on-dark">Eyes, from the machine.</p>
+            <p className="mt-2 text-sm text-steel-on-dark">Vision, from the machine.</p>
           </Reveal>
           <div className="lg:col-span-6 lg:col-start-7">
             <DemoForm />
