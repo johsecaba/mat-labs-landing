@@ -22,13 +22,6 @@ export const metadata: Metadata = {
 
 const stats = [
   {
-    value: "1.1B",
-    label: "cars on the road have no driver-assistance sensing. They drive without machine vision.",
-    note: "Yole Group, 2022: 12.3% of 1.3 billion cars on the road had ADAS. The other 87.7% is about 1.14 billion.",
-    href: "https://www.yolegroup.com/press-release/automotive-industry-a-massive-ai-powered-transformation-is-ongoing/",
-    source: "Yole Group",
-  },
-  {
     value: "3.1M",
     label: "small drones will fly in U.S. airspace by 2029.",
     note: "FAA, base forecast for 2029: 1.93 million recreational plus 1.18 million commercial.",
@@ -41,6 +34,13 @@ const stats = [
     note: "Statista Market Insights forecast, units per year. Includes robot vacuums, toys and consumer drones.",
     href: "https://www.statista.com/chart/9089/worldwide-personal-robot-sales-forecast/",
     source: "Statista",
+  },
+  {
+    value: "1.1B",
+    label: "cars on the road have no driver-assistance sensing. They drive without machine vision.",
+    note: "Yole Group, 2022: 12.3% of 1.3 billion cars on the road had ADAS. The other 87.7% is about 1.14 billion.",
+    href: "https://www.yolegroup.com/press-release/automotive-industry-a-massive-ai-powered-transformation-is-ongoing/",
+    source: "Yole Group",
   },
   {
     value: "3.6B",
