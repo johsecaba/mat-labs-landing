@@ -20,7 +20,7 @@ const stack = [
   },
   {
     kicker: "Software",
-    title: "Figure OS",
+    title: "FiguraOS",
     body: "People, pose, and form on that stream.",
   },
   {
@@ -66,7 +66,7 @@ const capabilities = [
 const record = [
   ["Format", "Spatial Phase Imaging"],
   ["Sensor", "3D and visual, live"],
-  ["Software", "Figure OS"],
+  ["Software", "FiguraOS"],
   ["People", "Detection and pose"],
   ["Mesh", "Face and body"],
   ["Surface", "Texture map"],
@@ -120,7 +120,7 @@ export default function HomePage() {
               <h2 className="h2 lg:col-span-7">Light and structure, in one stream.</h2>
               <p className="max-w-md text-[17px] leading-normal lg:col-span-5">
                 Spatial Phase Imaging is a 3D vision format. The sensor records
-                what a surface looks like and where it sits. Figure OS reads
+                what a surface looks like and where it sits. FiguraOS reads
                 that stream.
               </p>
             </div>
@@ -152,21 +152,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="figure-os" className="section bg-black text-fg">
+      <section id="figura-os" className="section bg-black text-fg">
         <div className="shell grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.5fr)] lg:gap-12">
           <Reveal>
-            <p className="tag">Figure OS</p>
+            <p className="tag">FiguraOS</p>
             <h2 className="h2 mt-6">Software that reads shape.</h2>
             <p className="mt-6 max-w-md text-[17px] leading-normal text-steel-on-dark">
-              Named for the Latin figura, shape. Figure OS runs vision models on the
+              Named for the Latin figura, shape. FiguraOS runs vision models on the
               live Spatial Phase Imaging stream: people, pose, and the form of
               what is in frame.
             </p>
           </Reveal>
           <Reveal>
             <Still
-              src="/media/figure-os.webp"
-              alt="Figure OS with a person marked for detection beside a pose skeleton and a position readout."
+              src="/media/figura-os.webp"
+              alt="FiguraOS with a person marked for detection beside a pose skeleton and a position readout."
               sizes="(min-width: 1024px) 840px, 100vw"
               priority
               zoom
@@ -240,7 +240,7 @@ export default function HomePage() {
             <div className="border-b border-steel py-8 md:border-b-0 md:border-r md:px-8">
               <h3 className="text-[22px] font-medium tracking-[-0.03em]">Figure</h3>
               <p className="mt-4 text-base leading-normal">
-                From the Latin figura, shape. Figure OS is how the eye reads form.
+                From the Latin figura, shape. FiguraOS is how the eye reads form.
               </p>
             </div>
             <div className="py-8 md:pl-8">

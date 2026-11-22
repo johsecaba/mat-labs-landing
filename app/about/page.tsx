@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 const title = "About";
 const description =
-  "MAT Labs builds Spatial Phase Imaging and Figure OS for U.S. enterprise and government. MAT is Greek for eye. The markets we build for are in the millions and billions.";
+  "MAT Labs builds Spatial Phase Imaging and FiguraOS for U.S. enterprise and government. MAT is Greek for eye. The markets we build for are in the millions and billions.";
 
 export const metadata: Metadata = {
   title,
@@ -63,7 +63,7 @@ export default function AboutPage() {
           <div className="mt-10 grid gap-6 lg:grid-cols-12">
             <div className="max-w-xl space-y-5 text-lg leading-normal text-steel-on-dark lg:col-span-6">
               <p>
-                MAT Labs builds Spatial Phase Imaging (SPI) and Figure OS, the software that reads people, pose and
+                MAT Labs builds Spatial Phase Imaging (SPI) and FiguraOS, the software that reads people, pose and
                 form from it. We sell to U.S. enterprises and U.S. government
                 programs.
               </p>

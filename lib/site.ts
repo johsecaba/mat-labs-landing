@@ -13,14 +13,14 @@ export const site = {
   url: "https://mat.co",
   title: "MAT Labs — Spatial Phase Imaging",
   description:
-    "MAT Labs builds Spatial Phase Imaging, a 3D vision format, and Figure OS. The closest thing to a human eye for today's machines. Not LiDAR.",
+    "MAT Labs builds Spatial Phase Imaging, a 3D vision format, and FiguraOS. The closest thing to a human eye for today's machines. Not LiDAR.",
   slogan: "Vision ex Machina",
   email: contactEmail,
 } as const;
 
 export const nav = [
   { href: "/#technology", label: "Technology" },
-  { href: "/#figure-os", label: "Figure OS" },
+  { href: "/#figura-os", label: "FiguraOS" },
   { href: "/#markets", label: "Markets" },
   { href: "/#company", label: "Company" },
   { href: "/merch", label: "Merch" },
