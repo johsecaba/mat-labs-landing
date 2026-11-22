@@ -9,7 +9,7 @@ import { IBM_Plex_Mono, Inter_Tight } from "next/font/google";
  */
 export const brandFont = Inter_Tight({
   subsets: ["latin", "latin-ext", "greek"],
-  weight: ["400", "500"],
+  weight: ["300", "400", "500"],
   display: "swap",
   variable: "--font-brand-file",
   adjustFontFallback: true,

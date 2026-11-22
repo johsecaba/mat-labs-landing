@@ -350,3 +350,17 @@ section[id] {
   mask-composite: exclude;
 }
 .merch-card:hover::before { opacity: 1; }
+
+/* About page: huge stat numbers filled with the brand gradient. */
+.stat-num {
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  font-size: clamp(88px, 17vw, 240px);
+  background: linear-gradient(100deg, #d8ff4a 0%, rgba(64, 255, 140, 1) 38%, rgba(255, 70, 220, 0.95) 78%, rgba(255, 150, 60, 1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  padding-right: 0.06em;
+}

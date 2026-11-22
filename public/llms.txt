@@ -28,3 +28,4 @@ MAT Labs is a business-to-business company. It supplies U.S. enterprises and U.S
 
 - [Home](https://mat.co/): Spatial Phase Imaging, the sensor, Figure OS, the 3D record, markets, the name, capabilities, and a demo request.
 - [Merch](https://mat.co/merch): MAT Labs shirt, mug and cap. No store yet; ask through the demo request form.
+- [About](https://mat.co/about): Who MAT Labs is, and the size of the markets it builds for: cars, drones, home robots and payment cards, with sources.
